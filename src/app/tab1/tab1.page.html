@@ -1,7 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Welcome
+    <ion-title style="color: #FFC633">
+      🐝WELCOME
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="login">
+      <ion-label>Login</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="signUp">
+      <ion-label>Sign Up</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+      
+</ion-content>
