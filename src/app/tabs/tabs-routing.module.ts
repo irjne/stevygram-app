@@ -28,7 +28,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'chats',
         children: [
           {
             path: '',
@@ -55,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

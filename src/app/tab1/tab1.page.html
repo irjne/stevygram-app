@@ -7,17 +7,27 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="segmentChanged($event)" color="warning">
+  <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="warning">
     <ion-segment-button value="0">
       <ion-label>Login</ion-label>
     </ion-segment-button>
     <ion-segment-button value="1">
       <ion-label>Sign Up</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="2" style ="background-color: #FFC633">
+    <ion-segment-button value="2" style="background-color: #FFC633">
       <ion-label>LogOut</ion-label>
     </ion-segment-button>
   </ion-segment>
-     <!--this is the BIG BIG BIG PROBLEEEEEEEEEM-->
-   
+  <!--this is the BIG BIG BIG PROBLEEEEEEEEEM-->
+
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true">
+    <ion-slide>
+      <app-login class='full-width'>
+      </app-login>
+    </ion-slide>
+    <ion-slide>
+      <app-sign-up class='full-width'>
+      </app-sign-up>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

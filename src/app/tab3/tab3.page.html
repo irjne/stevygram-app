@@ -6,6 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button size="large">New Chat</ion-button>
-</ion-content>
+<ion-list>
+  <ion-item *ngFor="let chat of chats">
+    <ion-label>{{ chat.name }} - {{ chat.description }}</ion-label>
+  </ion-item>
+</ion-list>
