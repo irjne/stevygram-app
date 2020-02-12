@@ -7,13 +7,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="login">
+  <ion-segment (ionChange)="segmentChanged($event)" color="warning">
+    <ion-segment-button value="0">
       <ion-label>Login</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="signUp">
+    <ion-segment-button value="1">
       <ion-label>Sign Up</ion-label>
     </ion-segment-button>
+    <ion-segment-button value="2" style ="background-color: #FFC633">
+      <ion-label>LogOut</ion-label>
+    </ion-segment-button>
   </ion-segment>
-      
+     <!--this is the BIG BIG BIG PROBLEEEEEEEEEM-->
+   
 </ion-content>
