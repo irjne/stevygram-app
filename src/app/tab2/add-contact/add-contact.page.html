@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>New contact</ion-title>
+    <ion-title>
+      <ion-icon  color="warning" name="md-add"></ion-icon>
+      New contact
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-label>Phone</ion-label>
+<ion-content class="ion-text-center">
+  <ion-icon class="ion-margin" name="call" color="warning"></ion-icon>
+  <br>
+  <ion-label >Phone</ion-label>
   <ion-input [(ngModel)]="phone" placeholder="Phone"></ion-input>
-  <ion-button (click)="saveOnPhonebook()">Save</ion-button>
+  <ion-button expand="full" size="small" color="warning"  (click)="saveOnPhonebook()">Save</ion-button>
 </ion-content>

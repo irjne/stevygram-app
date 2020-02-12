@@ -1,3 +1,15 @@
-<p>
-  sign-up works!
-</p>
+<ion-icon name="md-contact" color="warning"></ion-icon>
+<br>
+<ion-label>Name</ion-label>
+<ion-input [(ngModel)]="phone" placeholder="insert your name"></ion-input>
+<ion-label>Surname</ion-label>
+<ion-input [(ngModel)]="phone" placeholder="insert your surname"></ion-input>
+<ion-icon name="call" color="warning"></ion-icon>
+<br>
+<ion-label>Phone</ion-label>
+<ion-input [(ngModel)]="phone" placeholder="insert your number"></ion-input>
+<ion-icon name="ios-arrow-down" color="warning"x></ion-icon>
+<br>
+<ion-label>Password</ion-label>
+<ion-input [(ngModel)]="password" placeholder="insert your password"></ion-input>
+<ion-button (click)="login()" color="warning">Sign Up</ion-button>
