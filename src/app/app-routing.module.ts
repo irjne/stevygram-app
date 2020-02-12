@@ -5,6 +5,14 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'add-contact',
+    loadChildren: () => import('./tab2/add-contact/add-contact.module').then(m => m.AddContactPageModule)
+  },
+  {
+    path: 'add-contact',
+    loadChildren: () => import('./tab2/add-contact/add-contact.module').then( m => m.AddContactPageModule)
   }
 ];
 @NgModule({
@@ -13,4 +21,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

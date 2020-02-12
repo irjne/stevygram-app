@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      PhoneBook
+      Users
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button size="large">New Contacts</ion-button>
+  <ion-button (click)="redirectToAddContact()">New contact</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <ion-label>{{ user.phone }} - {{ user.name }} {{ user.surname }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
