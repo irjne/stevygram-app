@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../modules/user';
 import { UserService } from '../services/user.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -13,7 +14,7 @@ export class Tab2Page {
   users: User[] = [];
   sub;
 
-  constructor(private router: Router, private activatedRouter: ActivatedRoute, private userService: UserService) { }
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private userService: UserService, private navCtrl: NavController) { }
 
   async ngOnInit() {
     this.phonebook = await this.userService.getUsers();
@@ -38,9 +39,11 @@ export class Tab2Page {
 
   async removeContact(phone: string) {
     await this.userService.removeContact(phone);
-
-    this.sub = this.activatedRouter.params.subscribe(async params => {
-      this.ngOnInit();
-    });
+    console.log(phone);
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    this.navCtrl.navigateRoot('tabs/users');
+    // this.sub = this.activatedRouter.params.subscribe(async params => {
+    //   this.ngOnInit();
+    // });
   }
 }

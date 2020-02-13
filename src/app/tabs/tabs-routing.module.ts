@@ -24,11 +24,6 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-          },
-          {
-            path: '/add-contact',
-            loadChildren: () =>
-              import('../tab2/add-contact/add-contact.module').then(m => m.AddContactPageModule)
           }
         ]
       },
