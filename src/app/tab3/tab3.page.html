@@ -1,18 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-        <ion-icon color="warning" name="ios-chatbubbles"></ion-icon>
+      <ion-icon color="warning" name="ios-chatbubbles"></ion-icon>
       Chats
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-button expand="full" size="small" color="warning">New chat</ion-button>
+  <ion-button expand="full" size="small" color="warning" (click)="redirectToAddChat()">New chat</ion-button>
+  <ion-button expand="full" size="small" color="warning" (click)="redirectToAddGroup()">New group</ion-button>
   <ion-list>
-    <ion-item *ngFor="let chat of chats">
-      <ion-label color="warning">{{ chat.name }} </ion-label>
-      <ion-label color="dark"> {{ chat.description }} </ion-label>
+    <ion-item *ngFor="let chat of chats" routerLink="{{chat.id}}">
+      <ion-avatar slot="start">
+        <img
+          src="https://i2.wp.com/www.miasorellavolaconleapi.it/wp-content/uploads/2017/10/cropped-Cartoon-Bee-PNG-1.png?ssl=1">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ chat.name }}</h2>
+        <p>{{ chat.lastMessage }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

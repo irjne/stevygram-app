@@ -9,6 +9,14 @@ const routes: Routes = [
   {
     path: 'add-contact',
     loadChildren: () => import('./tab2/add-contact/add-contact.module').then(m => m.AddContactPageModule)
+  },
+  {
+    path: 'add-chat',
+    loadChildren: () => import('./tab3/add-chat/add-chat.module').then(m => m.AddChatPageModule)
+  },
+  {
+    path: 'add-group',
+    loadChildren: () => import('./tab3/add-group/add-group.module').then(m => m.AddGroupPageModule)
   }
 ];
 @NgModule({

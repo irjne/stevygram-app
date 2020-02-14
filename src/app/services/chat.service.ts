@@ -13,7 +13,7 @@ export class ChatService {
     return this.httpClient.get<Chat[]>(`https://stevygram.herokuapp.com/chats?token=${token}`).toPromise();
   }
 
-  async getChatById(id: number, user: string): Promise<Chat> {
+  async getChatById(id: number): Promise<Chat> {
     let token = localStorage.getItem('token');
     return this.httpClient.get<Chat>(`https://stevygram.herokuapp.com/chats/${id}?token=${token}`).toPromise();
   }

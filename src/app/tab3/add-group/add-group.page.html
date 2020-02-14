@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-float-center">
+      <ion-icon color="warning" size="small" name="md-add-circle"></ion-icon>
+      New group
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-icon class="ion-margin" name="call" color="warning"></ion-icon>
+  <br>
+  <ion-label>Name *</ion-label>
+  <ion-input [(ngModel)]="name" placeholder="Name"></ion-input>
+  <ion-label>Description</ion-label>
+  <ion-input [(ngModel)]="description" placeholder="Description"></ion-input>
+  <ion-label>Users (separated by only comma) *</ion-label>
+  <ion-input [(ngModel)]="users" placeholder="users"></ion-input>
+  <ion-button expand="full" size="small" color="warning" (click)="createGroup()">Create</ion-button>
+</ion-content>

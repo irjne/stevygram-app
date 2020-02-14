@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-avatar slot="start">
+      <img
+        src="https://banner2.cleanpng.com/20180217/kzw/kisspng-bumblebee-drawing-sketch-bee-tops-5a87f22c633be6.5256537615188587964065.jpg"
+        width="100%">
+    </ion-avatar>
+    <ion-title class="ion-float-center">
+      <ion-icon color="warning" size="small" name="md-add-circle"></ion-icon>
+      {{ chat.name }}
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-list>
+    <ion-item *ngFor="let message of messages">
+      <ion-avatar slot="start">
+        <img
+          src="https://banner2.cleanpng.com/20180217/kzw/kisspng-bumblebee-drawing-sketch-bee-tops-5a87f22c633be6.5256537615188587964065.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ message.sender }}</h2>
+        <p>{{ message.body }}</p>
+        <hr>
+        <p>{{ message.date }} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

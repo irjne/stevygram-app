@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Chat } from '../modules/chat'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../services/chat.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -14,7 +15,7 @@ export class Tab3Page {
   sub;
   id;
 
-  constructor(private activatedRouter: ActivatedRoute, private chatService: ChatService) { }
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private chatService: ChatService, public loadingController: LoadingController) { }
 
   async ngOnInit() {
     this.sub = this.activatedRouter.params.subscribe(async params => {
@@ -26,5 +27,24 @@ export class Tab3Page {
   async addMessage() {
     await this.chatService.addMessage(this.id, this.message);
     this.ngOnInit();
+  }
+
+  redirectToAddChat() {
+    this.router.navigate(['/add-chat']);
+  }
+
+  redirectToAddGroup() {
+    this.router.navigate(['/add-group']);
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 7000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 }
