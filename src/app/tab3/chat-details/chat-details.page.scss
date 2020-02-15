@@ -1,0 +1,7 @@
+.messages-scroll {max-height: 500px; top: 0; position: fixed}
+
+ion-toolbar ion-list ion-avatar, ion-toolbar ion-list ion-title, ion-toolbar ion-list ion-button {display:inline-block;}
+ion-header ion-toolbar:first-child {padding-top: 0px; }
+ion-toolbar ion-avatar {margin: auto 2%; }
+ion-toolbar ion-title {line-height: 64px; }
+ion-toolbar ion-button {float: right; height: 40px; margin: 12px; }

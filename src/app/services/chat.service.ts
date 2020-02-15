@@ -27,6 +27,11 @@ export class ChatService {
     let token = localStorage.getItem('token');
     let sender = localStorage.getItem('userOnSession');
     let date = new Date;
-    return this.httpClient.put<string>(`https://stevygram.herokuapp.com/chats/${id}/messages?token=${token}`, { sender, body, date: date.toString() }).toPromise();
+    return this.httpClient.put<string>(`https://stevygram.herokuapp.com/chats/${id}/add-message?token=${token}`, { sender, body, date: date.toString() }).toPromise();
+  }
+
+  async deleteChat(id: number): Promise<Object> {
+    let token = localStorage.getItem('token');
+    return this.httpClient.delete<Object>(`https://stevygram.herokuapp.com/chats/${id}?token=${token}`).toPromise();
   }
 }

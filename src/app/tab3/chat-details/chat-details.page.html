@@ -1,24 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-avatar slot="start">
-      <img
-        src="https://banner2.cleanpng.com/20180217/kzw/kisspng-bumblebee-drawing-sketch-bee-tops-5a87f22c633be6.5256537615188587964065.jpg"
-        width="100%">
-    </ion-avatar>
-    <ion-title class="ion-float-center">
-      <ion-icon color="warning" size="small" name="md-add-circle"></ion-icon>
-      {{ chat.name }}
-    </ion-title>
+    <ion-list>
+      <ion-avatar slot="start">
+        <img
+          src="https://i2.wp.com/www.miasorellavolaconleapi.it/wp-content/uploads/2017/10/cropped-Cartoon-Bee-PNG-1.png?ssl=1"
+          width="100%">
+      </ion-avatar>
+      <ion-title class="ion-float-center">
+        {{ name }}
+      </ion-title>
+      <ion-button color="warning" (click)="removeChat()">x</ion-button>
+    </ion-list>
   </ion-toolbar>
 
 </ion-header>
 
-<ion-content class="ion-text-center">
+<ion-content class="messages-scrollion-text-center">
   <ion-list>
     <ion-item *ngFor="let message of messages">
       <ion-avatar slot="start">
         <img
-          src="https://banner2.cleanpng.com/20180217/kzw/kisspng-bumblebee-drawing-sketch-bee-tops-5a87f22c633be6.5256537615188587964065.jpg">
+          src="https://images.vexels.com/media/users/3/147187/isolated/preview/f517d84b27cd2b44702335a227e7cd7d-sunflower-head-drawing-by-vexels.png">
       </ion-avatar>
       <ion-label>
         <h2>{{ message.sender }}</h2>
@@ -29,3 +31,12 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-item>
+    <ion-textarea [(ngModel)]="body" placeholder="Type your message here"></ion-textarea>
+    <ion-button shape="round" color="warning" fill="outline" (click)="sendMessage()">
+      <ion-icon name="md-send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>
