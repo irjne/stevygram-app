@@ -22,12 +22,11 @@ export class Tab2Page {
     this.phonebook = this.phonebook.splice(",");
 
     for (let i = 0; i < this.phonebook.length; i++) {
-      let user = await this.userService.getUserByPhone(this.phonebook[i]);
-      let contactInfo = Object.values(user)[0];
-      let nickname = String(Object.values(contactInfo)[2]);
-      let name = String(Object.values(contactInfo)[3]);
-      let surname = String(Object.values(contactInfo)[4]);
-      let phone = String(Object.values(contactInfo)[5]);
+      let user: User[] = await this.userService.getUserByPhone(this.phonebook[i]);
+      let nickname = user[0].nickname;
+      let name = user[0].name;
+      let surname = user[0].surname;
+      let phone = user[0].phone;
 
       this.users.push({ nickname, name, surname, phone });
     }
