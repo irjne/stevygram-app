@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar >
+    <ion-title >
       <ion-icon color="warning" name="ios-chatbubbles"></ion-icon>
       Chats
     </ion-title>
@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="full" size="small" color="warning" (click)="redirectToAddChat()">New chat</ion-button>
-  <ion-button expand="full" size="small" color="warning" (click)="redirectToAddGroup()">New group</ion-button>
+  <ion-button shape="round" expand="full" size="small" color="warning" (click)="redirectToAddChat()">New chat</ion-button>
+  <ion-button shape="round" expand="full" size="small" color="warning" (click)="redirectToAddGroup()">New group</ion-button>
   <ion-list>
     <ion-item *ngFor="let chat of chats" routerLink="{{chat.id}}">
       <ion-avatar slot="start">

@@ -1,15 +1,11 @@
-<ion-header>
+<ion-header class="ion-padding-top"> 
   <ion-toolbar>
     <ion-list>
-      <ion-avatar slot="start">
-        <img
-          src="https://i2.wp.com/www.miasorellavolaconleapi.it/wp-content/uploads/2017/10/cropped-Cartoon-Bee-PNG-1.png?ssl=1"
-          width="100%">
-      </ion-avatar>
-      <ion-title class="ion-float-center">
+
+      <ion-title  class="textTitle ion-text-justify">
         {{ name }}
       </ion-title>
-      <ion-button color="warning" (click)="removeChat()">x</ion-button>
+      <ion-button shape="round" color="danger" (click)="removeChat()">x</ion-button>
     </ion-list>
   </ion-toolbar>
 

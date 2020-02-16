@@ -13,7 +13,7 @@
     <ion-item *ngFor="let user of users">
       <ion-label style="font-size: 12px">{{ user.name }} {{ user.surname }} </ion-label>
       <ion-label class="ion-text-end">{{ user.phone }}</ion-label>
-      <ion-button size="small" color="danger" (click)="removeContact(user.phone)">
+      <ion-button shape="round" size="small" color="danger" (click)="removeContact(user.phone)">
         <ion-icon name="md-close"></ion-icon>
       </ion-button>
     </ion-item>
