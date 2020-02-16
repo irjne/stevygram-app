@@ -1,9 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <ion-title class="ion-float-center">
-      <ion-icon color="warning" size="small"  name="md-add-circle"></ion-icon>
+      <ion-icon color="warning" size="small" name="md-add-circle"></ion-icon>
       New contact
-      <ion-button size="small" color="medium" class="ion-float-right">BACK</ion-button>
     </ion-title>
   </ion-toolbar>
 
@@ -12,7 +11,7 @@
 <ion-content class="ion-text-center">
   <ion-icon class="ion-margin" name="call" color="warning"></ion-icon>
   <br>
-  <ion-label >Phone</ion-label>
+  <ion-label>Phone</ion-label>
   <ion-input [(ngModel)]="phone" placeholder="Phone"></ion-input>
-  <ion-button expand="full" size="small" color="warning"  (click)="saveOnPhonebook()">Save</ion-button>
+  <ion-button expand="full" size="small" color="warning" (click)="saveOnPhonebook()">Save</ion-button>
 </ion-content>

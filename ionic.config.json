@@ -1,5 +1,7 @@
 {
   "name": "StevyGram-Ionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
