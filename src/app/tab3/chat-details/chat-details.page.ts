@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/modules/chat';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/modules/user';
+import { Socket } from 'ngx-socket-io';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat-details',
@@ -17,9 +19,16 @@ export class ChatDetailsPage implements OnInit {
   messages: Message[];
   body;
 
-  constructor(private chatService: ChatService, private activatedRouter: ActivatedRoute, private userService: UserService, private router: Router) { }
+  constructor(private chatService: ChatService, private activatedRouter: ActivatedRoute, private userService: UserService, private router: Router, private socket: Socket, private toastCtrl: ToastController) { }
 
   async ngOnInit() {
+    this.socket.connect();
+    console.log("this.socket.connect(): " + this.socket.connect());
+    this.socket.emit('set-name', localStorage.getItem('userOnSession'));
+    this.socket.fromEvent('message').subscribe((message: Message) => {
+      this.messages.push(message);
+    });
+
     this.sub = this.activatedRouter.params.subscribe(async params => {
       this.id = params['id'];
       let chat = await this.chatService.getChatById(this.id)
@@ -51,12 +60,28 @@ export class ChatDetailsPage implements OnInit {
 
   async sendMessage() {
     await this.chatService.addMessage(this.id, this.body);
+    this.socket.emit('send-message', { text: this.body });
+    console.log(this.socket.emit('send-message', { text: this.body }));
+    this.body = "";
     this.ngOnInit();
+  }
+
+  ionViewWillLeave() {
+    this.socket.disconnect();
   }
 
   async removeChat() {
     await this.chatService.deleteChat(this.id);
     this.redirectToChats();
+  }
+
+  async showToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      position: 'top',
+      duration: 2000
+    });
+    toast.present();
   }
 
   redirectToChats() {
