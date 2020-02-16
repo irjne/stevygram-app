@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'add-group',
     loadChildren: () => import('./tab3/add-group/add-group.module').then(m => m.AddGroupPageModule)
+  },
+  {
+    path: 'tutorial',
+    loadChildren: () => import('./tutorial/tutorial.module').then(m => m.TutorialPageModule)
   }
 ];
 @NgModule({
