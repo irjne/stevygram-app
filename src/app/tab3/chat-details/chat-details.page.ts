@@ -18,22 +18,49 @@ export class ChatDetailsPage implements OnInit {
   name;
   messages: Message[];
   body;
+  chat;
 
   constructor(private chatService: ChatService, private activatedRouter: ActivatedRoute, private userService: UserService, private router: Router, private socket: Socket, private toastCtrl: ToastController) { }
+  ionViewWillLeave() {
+    this.socket.disconnect();
+  }
 
-  async ngOnInit() {
-    this.socket.connect();
-    console.log("this.socket.connect(): " + this.socket.connect());
-    this.socket.emit('set-name', localStorage.getItem('userOnSession'));
-    this.socket.fromEvent('message').subscribe((message: Message) => {
-      this.messages.push(message);
+  async showToast(msg) {
+    let toast = await this.toastCtrl.create({
+      message: msg,
+      position: "top",
+      duration: 2000
     });
+    toast.present();
+  }
+  async ngOnInit() {
+    // this.socket.connect();
+    // console.log("this.socket.connect(): " + this.socket.connect());
+    // this.socket.emit('set-name', localStorage.getItem('userOnSession'));
+    // this.socket.fromEvent('message').subscribe((message: Message) => {
+    //   this.messages.push(message);
+    // });
+
+
 
     this.sub = this.activatedRouter.params.subscribe(async params => {
       this.id = params['id'];
-      let chat = await this.chatService.getChatById(this.id)
-      this.name = chat.name;
-      this.messages = chat.messages;
+      this.chat = await this.chatService.getChatById(this.id)
+      this.name = this.chat.name;
+      this.messages = this.chat.messages;
+
+
+      // socket playground 
+      this.socket.connect();
+
+      this.socket.emit("add-message", this.chat);
+
+      this.socket.fromEvent("add-message").subscribe(async data => {
+        this.chat = await this.chatService.getChatById(
+          this.chat.id
+        );
+        this.showToast(data["event"]);
+      });
 
       for (let i = 0; i < this.messages.length; i++) {
         let message = this.messages[i];
@@ -60,29 +87,19 @@ export class ChatDetailsPage implements OnInit {
 
   async sendMessage() {
     await this.chatService.addMessage(this.id, this.body);
-    this.socket.emit('send-message', { text: this.body });
-    console.log(this.socket.emit('send-message', { text: this.body }));
+    this.socket.emit('add-message', { text: this.body });
+    console.log(this.socket.emit('add-message', { text: this.body }));
     this.body = "";
     this.ngOnInit();
   }
 
-  ionViewWillLeave() {
-    this.socket.disconnect();
-  }
+
 
   async removeChat() {
     await this.chatService.deleteChat(this.id);
     this.redirectToChats();
   }
 
-  async showToast(msg) {
-    let toast = await this.toastCtrl.create({
-      message: msg,
-      position: 'top',
-      duration: 2000
-    });
-    toast.present();
-  }
 
   redirectToChats() {
     this.router.navigate(['tabs/chats']);
