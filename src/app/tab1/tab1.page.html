@@ -7,14 +7,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="warning">
+  <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="dark">
     <ion-segment-button value="0">
       <ion-label>Login</ion-label>
     </ion-segment-button>
     <ion-segment-button value="1">
       <ion-label>Sign Up</ion-label>
     </ion-segment-button>
-    <ion-segment-button (click)="logOut()" style="background-color: #FFC633">
+    <ion-segment-button (click)="logOut()" style="background-color: #FFC633" color="tertiary">
       <ion-label>LogOut</ion-label>
     </ion-segment-button>
   </ion-segment>
