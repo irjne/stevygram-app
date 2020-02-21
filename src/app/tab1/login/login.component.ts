@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   password: string;
   token: string;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private toastController: ToastController) { }
 
   ngOnInit() { }
 
@@ -25,11 +26,22 @@ export class LoginComponent implements OnInit {
     }
     catch (error) {
       this.token = "failed";
+      this.presentToast();
       return error;
     }
   }
 
   redirect() {
     this.router.navigate([`tabs/chats`]);
+  }
+
+  async presentToast() {
+    let toast = await this.toastController.create(
+      {
+        message: 'Login failed.',
+        duration: 2000
+      }
+    )
+    toast.present();
   }
 }
