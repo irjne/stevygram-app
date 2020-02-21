@@ -30,7 +30,6 @@ export class AppComponent {
   launchTutorial() {
     if (localStorage.getItem('tutorial') != "done") {
       this.router.navigate([`tutorial`]);
-      localStorage.setItem('tutorial', "done");
     }
   }
 }

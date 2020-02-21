@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  //buttonDisabled = localStorage.getItem('token') ? null : true;
 
-  constructor() { }
-
+  constructor() {
+  }
 }

@@ -14,6 +14,7 @@ export class TutorialPage implements OnInit {
   }
 
   redirectToLogin() {
+    localStorage.setItem('tutorial', "done");
     this.router.navigate([`tabs/tab1`]);
   }
 }

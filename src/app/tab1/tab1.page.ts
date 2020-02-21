@@ -24,12 +24,12 @@ export class Tab1Page implements OnInit {
 
   logOut() {
     localStorage.clear();
+    this.presentToast();
     this.ngOnInit();
   }
 
-  async presentToast(type: String) {
-    let toast;
-    toast = await this.toastController.create(
+  async presentToast() {
+    let toast = await this.toastController.create(
       {
         message: 'Logout successfully.',
         duration: 2000
